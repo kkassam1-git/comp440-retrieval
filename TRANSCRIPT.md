@@ -103,7 +103,7 @@ Setup will continue from there: installing the packages, then your name and the 
 <!-- transcript-session: 1755bad9-16b8-4825-b0ec-bb1ae233900f | 2026-10-22T02:51:39.761Z -->
 ## Session `1755bad9`, 2026-10-22 02:51:39
 
-*2 user turns. Tool outputs and reasoning omitted.*
+*5 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 lets start this activity
@@ -145,5 +145,59 @@ Kaif Kassam
 **Claude:**
 - 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
 - 🔧 `Bash`: Refresh transcript and commit name and date
+- 🔧 `Read`: /private/tmp/claude-501/-Users-kaifkassam-Desktop-Semester-7-Collective-Intelligence-Github-comp4...
+I added your name and today's date, then committed.
+
+```
+Wrote TRANSCRIPT.md: 2 session(s).
+2 session(s) found; this session in TRANSCRIPT.md: yes.
+[main 23c3703] Name and date
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+```
+
+The background install just finished:
+
+```
+The embedding model is ready: it matches the shipped vectors for 5 test movies.
+```
+
+**Part 0: Predictions** (about 10 minutes)
+
+Keyword search (TF-IDF) scores a movie by the words its plot summary shares with your question. Embedding search turns your question and each plot summary into a list of numbers. It then ranks the movies whose numbers are closest to your question's.
+
+First prediction: **for questions that name a character, place or thing, which method will do better, and why?** A guess is fine. A sentence or two with one reason is enough.
+
+**User:**
+how long should this activity take?
+
+**Claude:**
+The whole activity takes about 50 minutes. The README's guide per part:
+
+- Part 0 (predictions): about 10 minutes
+- Part 1 (TF-IDF settings): about 6
+- Part 2 (top terms): about 6
+- Part 3 (your own searches): about 7
+- Part 4 (question bank): about 9
+- Part 5 (embeddings): about 12
+
+The installs are already done, so Part 0 should go faster. Anything unfinished is due **8:00am Thursday, October 22**, which is tomorrow morning.
+
+Back to the first prediction: **for questions that name a character, place or thing, which method will do better, and why?** A sentence or two is enough.
+
+**User:**
+im going to go with TF-IDF, specific names of movies or characters are more direct than embdedded meanings
+
+**Claude:**
+- 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
+Your first slot now reads:
+
+> ### Questions that name a character, place or thing: which method will do better, and why?
+>
+> im going to go with TF-IDF, specific names of movies or characters are more direct than embdedded meanings
+
+Second prediction: **for vague descriptions, which method will do better, and why?** A sentence or two is enough.
+
+**User:**
+the embedding search works better for vague descriptions - since that's waht embdedding does, it compresses the question into general ideas
 
 <!-- end-session: 1755bad9-16b8-4825-b0ec-bb1ae233900f -->

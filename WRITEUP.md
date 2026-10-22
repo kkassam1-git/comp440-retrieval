@@ -28,7 +28,7 @@ the embedding search works better for vague descriptions - since that's waht emb
 
 ### Your movies: what do the top terms get right and wrong about what makes each one distinctive?
 
-XXXX
+It gets specific names like vito and corleone right, but still weighs terms like launching, barely, and steps highly even if they contribute poorly to informing us about the movie.
 
 ## Part 3: Your own searches
 

@@ -103,7 +103,7 @@ Setup will continue from there: installing the packages, then your name and the 
 <!-- transcript-session: 1755bad9-16b8-4825-b0ec-bb1ae233900f | 2026-10-22T02:51:39.761Z -->
 ## Session `1755bad9`, 2026-10-22 02:51:39
 
-*13 user turns. Tool outputs and reasoning omitted.*
+*16 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 lets start this activity
@@ -473,5 +473,82 @@ That's your three. I wrote them into your writeup word for word:
 The first one was spot on, the second one failed to have the movie in any of the top 10 listed, and the third one had the movie ranked number 4
 
 It got right the matches where the meanings of words are not interchangeable - I would say the use of the word crash threw the algorithm off in the second search and the use of many common words like after, of, the, etc.
+
+**Claude:**
+- 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
+- 🔧 `Bash`: Commit Part 3 and push
+- 🔧 `Bash`: Run the question bank with TF-IDF
+Your slot now reads:
+
+> ### Did the movies you meant come up? What did TF-IDF get right and wrong?
+>
+> The first one was spot on, the second one failed to have the movie in any of the top 10 listed, and the third one had the movie ranked number 4
+>
+> It got right the matches where the meanings of words are not interchangeable - I would say the use of the word crash threw the algorithm off in the second search and the use of many common words like after, of, the, etc.
+
+```
+[main c20d0f1] Part 3 done
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+To github.com:kkassam1-git/comp440-retrieval.git
+   fa5effd..c20d0f1  main -> main
+```
+
+Part 3 is saved on GitHub.
+
+**Part 4: The question bank** (about 9 minutes)
+
+I ran all 518 questions in the bank through TF-IDF:
+
+```
+TF-IDF, with your settings: REMOVE_STOP_WORDS = False, MIN_MOVIES = 1, REPEATS_COUNT_LESS = True.
+Ran 518 questions against 4,309 movies in under a second.
+
+TF-IDF put the right movie first for 23 of 100 written questions and in the top 10 for 33.
+  Of the 34 detail questions, it put 23 first and 32 in the top 10.
+  Of the 33 reworded questions, it put 0 first and 0 in the top 10.
+  Of the 33 vague questions, it put 0 first and 1 in the top 10.
+It put the right movie first for 20 of 418 real requests and in the top 10 for 59.
+
+Saved every question's top 10 in results/tfidf.json. To look through them: uv run python site.py
+```
+
+**Which kind of question did TF-IDF handle best, and which worst? By how much?** A sentence or two is enough.
+
+**User:**
+uv run python site.py
+
+**Claude:**
+- 🔧 `Bash`: Start the comparison site
+- 🔧 `Bash`: Read the README's Part 4 section
+- 🔧 `Read`: /private/tmp/claude-501/-Users-kaifkassam-Desktop-Semester-7-Collective-Intelligence-Github-comp4...
+I started the site:
+
+```
+The site is running at http://localhost:8765. Stop it with Ctrl-C.
+```
+
+It should have opened in your browser. If it didn't, go to http://localhost:8765.
+
+It shows one question at a time: the right movie, where TF-IDF ranked it, and TF-IDF's top 10 with the words each one shares with the question. Pick "TF-IDF missed" in the Show menu to see only the questions where the right movie isn't in the top 10. To talk about a question, give me its id, like w026.
+
+Before you look at the misses, the slot for the scores is still open. **Which kind of question did TF-IDF handle best, and which worst? By how much?** A sentence or two is enough.
+
+**User:**
+TF-IDF did best on the questions that were detailed and had specific references like names of places, charactersm and things. It did the worst on reworded and close to that on vague questions. There is a 94% difference between the best and worst category.
+
+**Claude:**
+- 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
+Your slot now reads:
+
+> ### Which kind of question did TF-IDF handle best, and which worst? By how much?
+>
+> TF-IDF did best on the questions that were detailed and had specific references like names of places, charactersm and things. It did the worst on reworded and close to that on vague questions. There is a 94% difference between the best and worst category.
+
+One caution: each kind has only 33 or 34 questions, so a single question moves that kind's rate by about 3 points.
+
+Now go through some answers on the site, especially the misses ("TF-IDF missed" in the Show menu). Choose whichever ones you like. When you've looked at a few, tell me: **what do the misses you looked at have in common?** A sentence or two is enough.
+
+**User:**
+The misses I've looked at seem to include descriptions of similar ideas using different words - i.e. a difference between terms "rich" and "wealthy" or names like "cal" shared with other movies. This is inherently a failure of this algorithm that it depends on the frequency and matching of exact terms.
 
 <!-- end-session: 1755bad9-16b8-4825-b0ec-bb1ae233900f -->

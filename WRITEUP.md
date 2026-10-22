@@ -10,11 +10,11 @@ Part 0 predictions stay as you first wrote them; Part 5 asks what you would chan
 
 ### Questions that name a character, place or thing: which method will do better, and why?
 
-XXXX
+im going to go with TF-IDF, specific names of movies or characters are more direct than embdedded meanings
 
 ### Vague descriptions: which method will do better, and why?
 
-XXXX
+the embedding search works better for vague descriptions - since that's waht embdedding does, it compresses the question into general ideas
 
 ## Part 1: Build the TF-IDF model
 

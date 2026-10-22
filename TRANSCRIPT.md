@@ -103,7 +103,7 @@ Setup will continue from there: installing the packages, then your name and the 
 <!-- transcript-session: 1755bad9-16b8-4825-b0ec-bb1ae233900f | 2026-10-22T02:51:39.761Z -->
 ## Session `1755bad9`, 2026-10-22 02:51:39
 
-*16 user turns. Tool outputs and reasoning omitted.*
+*24 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 lets start this activity
@@ -550,5 +550,160 @@ Now go through some answers on the site, especially the misses ("TF-IDF missed" 
 
 **User:**
 The misses I've looked at seem to include descriptions of similar ideas using different words - i.e. a difference between terms "rich" and "wealthy" or names like "cal" shared with other movies. This is inherently a failure of this algorithm that it depends on the frequency and matching of exact terms.
+
+**Claude:**
+- 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
+- 🔧 `Bash`: Commit Part 4 and push
+- 🔧 `Bash`: Run the question bank with embeddings
+Your slot now reads:
+
+> ### The misses you looked at: what do they have in common?
+>
+> The misses I've looked at seem to include descriptions of similar ideas using different words - i.e. a difference between terms "rich" and "wealthy" or names like "cal" shared with other movies. This is inherently a failure of this algorithm that it depends on the frequency and matching of exact terms.
+
+One caution: you picked the misses you looked at, so they may not reflect every reason TF-IDF missed across the whole list.
+
+```
+[main e0c9522] Part 4 done
+ 2 files changed, 105548 insertions(+), 2 deletions(-)
+ create mode 100644 results/tfidf.json
+To github.com:kkassam1-git/comp440-retrieval.git
+   c20d0f1..e0c9522  main -> main
+```
+
+Part 4 is saved on GitHub.
+
+**Part 5: Embeddings** (about 12 minutes)
+
+The model finished downloading during setup. I've started running the question bank with embeddings, which takes a minute or so.
+
+**What a sentence embedding is:** on October 1, you saw that GloVe gives each word a list of numbers. Words used in similar contexts get similar lists. A sentence model does the same thing for a whole sentence or plot summary. It turns the text into one list of numbers, here 384 of them. Texts that mean similar things get lists that sit close together, even when they share few words. Search ranks movies by how close each summary's list is to your question's list.
+
+Ask me anything about it. When you're ready: **what is a sentence embedding, in your own words?** Use one of your own Part 3 questions or movies as the example. A sentence or two is enough.
+
+**User:**
+<task-notification>
+<task-id>b08sy54p0</task-id>
+<tool-use-id>toolu_01P4RYKZDW7CXqCe517KUSFk</tool-use-id>
+<output-file>/private/tmp/claude-501/-Users-kaifkassam-Desktop-Semester-7-Collective-Intelligence-Github-comp440-retrieval/1755bad9-16b8-4825-b0ec-bb1ae233900f/tasks/b08sy54p0.output</output-file>
+<status>completed</status>
+<summary>Background command "Run the question bank with embeddings" completed (exit code 0)</summary>
+</task-notification>
+
+**Claude:**
+- 🔧 `Bash`: Show the last line of the embedding run
+- 🔧 `Bash`: Show the last line the run printed
+The embedding run finished. Its last line:
+
+```
+Saved every question's top 10 in results/embed.json. To look through them: uv run python site.py
+```
+
+I'll show you the full scores once your sentence-embedding answer is in.
+
+**User:**
+Sentence embeddings transform setences and summaries into combinations of numbers encoding the general stance of the words in terms of meaning. This makes it such that texts with different use of vocabulary can still match by similarity of message and meaning. Parasite's summary does not match with any terms in the question, but I assume the sentece embedding approach will place them closer.
+
+**Claude:**
+- 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
+- 🔧 `Read`: /private/tmp/claude-501/-Users-kaifkassam-Desktop-Semester-7-Collective-Intelligence-Github-comp4...
+Your slot now reads:
+
+> ### What is a sentence embedding, in your own words?
+>
+> Sentence embeddings transform setences and summaries into combinations of numbers encoding the general stance of the words in terms of meaning. This makes it such that texts with different use of vocabulary can still match by similarity of message and meaning. Parasite's summary does not match with any terms in the question, but I assume the sentece embedding approach will place them closer.
+
+Here's the full embedding run:
+
+```
+Embedding 518 questions. This can take a minute.
+Ran 518 questions against 4,309 movies in 17 seconds.
+
+Embeddings put the right movie first for 31 of 100 written questions and in the top 10 for 59.
+  Of the 34 detail questions, they put 24 first and 31 in the top 10.
+  Of the 33 reworded questions, they put 4 first and 18 in the top 10.
+  Of the 33 vague questions, they put 3 first and 10 in the top 10.
+They put the right movie first for 32 of 418 real requests and in the top 10 for 81.
+
+The embedding model reads only about the first 200 words of a question, so it ignored the end of 62 of the 418 real requests.
+
+Saved every question's top 10 in results/embed.json. To look through them: uv run python site.py
+```
+
+Reload the site. It now shows both methods. Its Show menu has three new choices, each with a count: "TF-IDF did better", "Embeddings did better" and "Both missed".
+
+Look at one question from "TF-IDF did better" and one from "Embeddings did better", whichever you like. I can also rerun your Part 3 questions with both methods, if you want.
+
+Tell me when you've looked.
+
+**User:**
+done, I looked at both
+
+**Claude:**
+Now the slot: **where does each method do better, and why?** A sentence or two is enough.
+
+**User:**
+TF-IDF does better when there is one exact rare reference that matches like "Six-fingered" for The princess Bride. Sentence embeddings does better at matching similarities in descriptions that do not share words like Parasit or Mad Max - but this also fails when there are many options with similar undelying distances in their meaning parameters - the algorithm confuses movies and ranks the wrong ones above the right one.
+
+**Claude:**
+- 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
+Your slot now reads:
+
+> ### Where does each method do better, and why?
+>
+> TF-IDF does better when there is one exact rare reference that matches like "Six-fingered" for The princess Bride. Sentence embeddings does better at matching similarities in descriptions that do not share words like Parasit or Mad Max - but this also fails when there are many options with similar undelying distances in their meaning parameters - the algorithm confuses movies and ranks the wrong ones above the right one.
+
+One caution: a few examples show how each method can win, but not how often each case comes up across the bank.
+
+Here are your two Part 0 predictions:
+
+> **Questions that name a character, place or thing:** im going to go with TF-IDF, specific names of movies or characters are more direct than embdedded meanings
+
+> **Vague descriptions:** the embedding search works better for vague descriptions - since that's waht embdedding does, it compresses the question into general ideas
+
+**Which held, and which would you change now, and why?** A sentence or two is enough.
+
+**User:**
+I'd change the specific name part, adding that sentence embeddings still performs on part with TF-IDF on this. The vague description prediction held.
+
+**Claude:**
+- 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
+Your slot now reads:
+
+> ### Your Part 0 predictions: which held, and which would you change?
+>
+> I'd change the specific name part, adding that sentence embeddings still performs on part with TF-IDF on this. The vague description prediction held.
+
+One caution: on detail questions the two methods are one question apart either way (first place: 24 vs 23; top 10: 31 vs 32). A set this small can't really tell them apart there.
+
+Last slot: **how might you combine the two methods?** A sentence or two is enough.
+
+**User:**
+add in the context of this experitment
+
+**Claude:**
+Just to check what you mean: should I add the words "in the context of this experitment" to the slot I just wrote? If so, where? For example, at the end of your first sentence: "...on part with TF-IDF on this, in the context of this experiment."
+
+Or did you mean something else?
+
+**User:**
+yes in the beginning
+
+**Claude:**
+- 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
+Your slot now reads:
+
+> ### Your Part 0 predictions: which held, and which would you change?
+>
+> in the context of this experitment, I'd change the specific name part, adding that sentence embeddings still performs on part with TF-IDF on this. The vague description prediction held.
+
+Last slot: **how might you combine the two methods?** A sentence or two is enough.
+
+**User:**
+Maybe it makes sense to have embeddings list out a top match list and use TF-IDf to filter out matches from that selected pool, combining both algorithms.
+
+**Claude:**
+- 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
+- 🔧 `Bash`: Commit Part 5 and push
 
 <!-- end-session: 1755bad9-16b8-4825-b0ec-bb1ae233900f -->

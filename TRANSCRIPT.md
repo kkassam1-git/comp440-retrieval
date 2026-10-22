@@ -103,7 +103,7 @@ Setup will continue from there: installing the packages, then your name and the 
 <!-- transcript-session: 1755bad9-16b8-4825-b0ec-bb1ae233900f | 2026-10-22T02:51:39.761Z -->
 ## Session `1755bad9`, 2026-10-22 02:51:39
 
-*9 user turns. Tool outputs and reasoning omitted.*
+*13 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 lets start this activity
@@ -368,5 +368,110 @@ It gets specific names like vito and corleone right, but still weighs terms like
 **Claude:**
 - 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
 - 🔧 `Bash`: Commit Part 2 and push
+Your slot now reads:
+
+> ### Your movies: what do the top terms get right and wrong about what makes each one distinctive?
+>
+> It gets specific names like vito and corleone right, but still weighs terms like launching, barely, and steps highly even if they contribute poorly to informing us about the movie.
+
+```
+[main fa5effd] Part 2 done
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+To github.com:kkassam1-git/comp440-retrieval.git
+   73e95f6..fa5effd  main -> main
+```
+
+Part 2 is saved on GitHub.
+
+**Part 3: Your own searches** (about 7 minutes)
+
+Now you'll search the collection with TF-IDF. You'll run three questions, and I'll paste the top 10 movies for each.
+
+What's your first question? For example, describe a movie you know in your own words, without its title.
+
+**User:**
+A man travels on a mission to a nearby planet. A storm strikes and his team leaves him there thinking he is dead. He manages to survive and returns back eventually after setting communication with Earth.
+
+**Claude:**
+- 🔧 `Bash`: Search with the first question
+```
+Question: A man travels on a mission to a nearby planet. A storm strikes and his team leaves him there thinking he is dead. He manages ...
+
+TF-IDF, top 10:
+   1. 0.173  The Martian (2015)   matched: storm, planet, dead, mission, earth, he, after, and, to, is, his, on, with
+   2. 0.151  Swingers (1996)   matched: travels, leaves, him, he, after, to, his, on, and
+   3. 0.143  Renaissance Man (1994)   matched: thinking, there, he, man, him, is, on, to, his
+   4. 0.143  Hot Shots! Part Deux (1993)   matched: storm, team, mission, man, him, after, to, is
+   5. 0.136  Seeking a Friend for the End of the World (2012)   matched: leaves, earth, man, he, him, after, his, to, with, is
+   6. 0.133  Enemy Mine (1985)   matched: survive, eventually, earth, he, on, after, his, to
+   7. 0.133  Somewhere in Time (1980)   matched: manages, back, he, him, to, is, and, on, with, his
+   8. 0.131  Cocoon: The Return (1988)   matched: earth, back, planet, to, on
+   9. 0.127  Shooter (2007)   matched: leaves, eventually, mission, back, he, him, after, and, to, on, is
+  10. 0.127  Bleeders (1997)   matched: travels, dead, man, he, his, with, to
+```
+
+The score column is the cosine similarity between your question's TF-IDF vector and each summary's. "matched" lists the words from your question that appear in that summary.
+
+What's your second question?
+
+**User:**
+A group of traders short the housing market after the financial crash of 2008.
+
+**Claude:**
+- 🔧 `Bash`: Search with the second question
+```
+Question: A group of traders short the housing market after the financial crash of 2008.
+
+TF-IDF, top 10:
+   1. 0.176  Inside Job (2010)   matched: financial, 2008, of, the
+   2. 0.136  Attack the Block (2011)   matched: housing, the
+   3. 0.111  It's a Mad, Mad, Mad, Mad World (1963)   matched: crash, group, after, of, the
+   4. 0.108  UHF (1989)   matched: financial, of, the
+   5. 0.104  Margin Call (2011)   matched: financial, the, of
+   6. 0.102  Casino Royale (2006)   matched: market, financial, the, of
+   7. 0.102  4 Months, 3 Weeks and 2 Days (4 luni, 3 saptamâni si 2 zile) (2007)   matched: market, the
+   8. 0.100  The Last Halloween (1991)   matched: crash, of
+   9. 0.100  Final Destination (2000)   matched: crash, after, of, the
+  10. 0.100  Soldier (1998)   matched: crash, group, after, of, the
+```
+
+What's your third question?
+
+**User:**
+A detective travels with a group of friends of someone really wealthy  who has anonymously invited him to an island. The friends play a game and people start dying. The detective has to solve this mystery.
+
+**Claude:**
+- 🔧 `Bash`: Search with the third question
+- 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
+```
+Question: A detective travels with a group of friends of someone really wealthy who has anonymously invited him to an island. The friends play a game ...
+
+TF-IDF, top 10:
+   1. 0.174  Wicker Man, The (2006)   matched: island, solve, mystery, the, of, to
+   2. 0.167  Weekend at Bernie's (1989)   matched: invited, friends, island, people, him, to, the, and, with, of
+   3. 0.162  Final Destination (2000)   matched: dying, friends, has, him, of, to, the, and
+   4. 0.159  Glass Onion: A Knives Out Mystery (2022)   matched: detective, mystery, friends, of, to, the, and
+   5. 0.156  Game Night (2018)   matched: game, solve, mystery, start, friends, to, the, of, with, and
+   6. 0.148  I Heart Huckabees (2004)   matched: detective, solve, play, the, and
+   7. 0.143  Waxwork (1988)   matched: invited, wealthy, friends, of, and, to, the
+   8. 0.142  Mamma Mia! (2008)   matched: invited, island, has, who, of, the, an, to
+   9. 0.139  eXistenZ (1999)   matched: game, play, has, with, the, to
+  10. 0.136  Demon Wind (1990)   matched: friends, mystery, has, group, him, the, to, of, and, with
+```
+
+That's your three. I wrote them into your writeup word for word:
+
+> ### Your questions, as you typed them
+>
+> 1. A man travels on a mission to a nearby planet. A storm strikes and his team leaves him there thinking he is dead. He manages to survive and returns back eventually after setting communication with Earth.
+> 2. A group of traders short the housing market after the financial crash of 2008.
+> 3. A detective travels with a group of friends of someone really wealthy  who has anonymously invited him to an island. The friends play a game and people start dying. The detective has to solve this mystery.
+
+**Did the movies you meant come up? What did TF-IDF get right and wrong?** A sentence or two is enough.
+
+**User:**
+The first one was spot on, the second one failed to have the movie in any of the top 10 listed, and the third one had the movie ranked number 4
+
+It got right the matches where the meanings of words are not interchangeable - I would say the use of the word crash threw the algorithm off in the second search and the use of many common words like after, of, the, etc.
 
 <!-- end-session: 1755bad9-16b8-4825-b0ec-bb1ae233900f -->

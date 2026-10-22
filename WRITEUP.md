@@ -20,7 +20,9 @@ the embedding search works better for vague descriptions - since that's waht emb
 
 ### The settings you chose, and why
 
-XXXX
+- `REMOVE_STOP_WORDS = False`: idf should shrink these commonly occuring "stop words" and their weights
+- `MIN_MOVIES = 1`: anythign above this would make specific scenarios not workable, i.e. a movie name appears only in one summary and it is ignored because it is less than 2 appearances.
+- `REPEATS_COUNT_LESS = True`: repeated count does not necessarily translate to higher relevance, especially given words that are not specific names.
 
 ## Part 2: Top terms
 

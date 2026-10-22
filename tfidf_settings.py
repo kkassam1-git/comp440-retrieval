@@ -21,4 +21,4 @@ MIN_MOVIES = 1
 # When a word appears several times in one plot summary, count it less than its full count:
 # 1 + log(count) instead of count, so 4 appearances count as about 2.4. True or False.
 # (sublinear_tf)
-REPEATS_COUNT_LESS = False
+REPEATS_COUNT_LESS = True

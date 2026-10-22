@@ -103,7 +103,7 @@ Setup will continue from there: installing the packages, then your name and the 
 <!-- transcript-session: 1755bad9-16b8-4825-b0ec-bb1ae233900f | 2026-10-22T02:51:39.761Z -->
 ## Session `1755bad9`, 2026-10-22 02:51:39
 
-*6 user turns. Tool outputs and reasoning omitted.*
+*9 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 lets start this activity
@@ -250,5 +250,123 @@ repeat_count_less - True, repeated count does not necessarily translate to highe
 - 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/tfidf_setti...
 - 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
 - 🔧 `Bash`: Show settings, commit Part 1 and push
+These are the settings now in `tfidf_settings.py`:
+
+```
+REMOVE_STOP_WORDS = False
+MIN_MOVIES = 1
+REPEATS_COUNT_LESS = True
+```
+
+Your slot now reads:
+
+> ### The settings you chose, and why
+>
+> - `REMOVE_STOP_WORDS = False`: idf should shrink these commonly occuring "stop words" and their weights
+> - `MIN_MOVIES = 1`: anythign above this would make specific scenarios not workable, i.e. a movie name appears only in one summary and it is ignored because it is less than 2 appearances.
+> - `REPEATS_COUNT_LESS = True`: repeated count does not necessarily translate to higher relevance, especially given words that are not specific names.
+
+```
+[main 73e95f6] Part 1 done
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+To github.com:kkassam1-git/comp440-retrieval.git
+   fcfc7be..73e95f6  main -> main
+```
+
+Part 1 is saved on GitHub. The template has no new updates.
+
+**Part 2: Top terms** (about 6 minutes)
+
+The packages are installed (`Installed 38 packages in 379ms`). Next, `top_terms.py` shows the words with the highest TF-IDF weight in one movie's plot summary. The movies you rated in HW1 are all in the collection.
+
+Which two movies do you know well?
+
+**User:**
+The Godfather 1973, The conjuring 2
+
+**Claude:**
+- 🔧 `Bash`: Show top TF-IDF terms for both movies
+```
+No movie title matches "The Godfather 1973".
+Close ones: Godfather, The (1972); Godfather: Part II, The (1974); Others, The (2001); Godfather: Part III, The (1990); Tokyo Godfathers (2003)
+-----
+The Conjuring 2 (2016): the 15 words with the highest TF-IDF weight in its plot summary.
+
+     word               weight  count here  movies
+  1. lorraine            0.327           1       2
+  2. malicious           0.307           1       4
+  3. warren              0.294           1       6
+  4. ed                  0.280           1       9
+  5. raising             0.276           1      10
+  6. spirits             0.264           1      14
+  7. plagued             0.256           1      17
+  8. north               0.252           1      19
+  9. alone               0.219           1      45
+ 10. travel              0.212           1      54
+ 11. single              0.211           1      55
+ 12. london              0.209           1      58
+ 13. four                0.195           1      83
+ 14. children            0.189           1      99
+ 15. house               0.178           1     129
+
+count here: how many times the word is in this plot summary. movies: how many of the 4,309 plot summaries have it.
+
+The plot summary: Lorraine and Ed Warren travel to north London to help a single mother raising four children alone in a house plagued by malicious spirits.
+
+Your settings: REMOVE_STOP_WORDS = False, MIN_MOVIES = 1, REPEATS_COUNT_LESS = True.
+```
+
+The Conjuring 2 ran. "The Godfather 1973" didn't match any title, but the script listed close ones, including *The Godfather (1972)* and *The Godfather: Part II (1974)*.
+
+Which Godfather movie did you mean?
+
+**User:**
+the godfather 1972
+
+**Claude:**
+- 🔧 `Bash`: Show top TF-IDF terms for The Godfather
+- 🔧 `Bash`: Show top TF-IDF terms using the listed title
+Your words didn't match either, because the collection files the title as "Godfather, The". I ran it using the title from the list:
+
+```
+No movie title matches "the godfather 1972".
+Close ones: Godfather, The (1972); Godfather: Part II, The (1974); Others, The (2001); Godfather: Part III, The (1990); Tokyo Godfathers (2003)
+```
+
+```
+Godfather, The (1972): the 15 words with the highest TF-IDF weight in its plot summary.
+
+     word               weight  count here  movies
+  1. corleone            0.358           2       3
+  2. vito                0.219           1       2
+  3. crime               0.216           2      94
+  4. 1955                0.212           1       3
+  5. 1945                0.212           1       3
+  6. launching           0.201           1       5
+  7. organized           0.197           1       6
+  8. youngest            0.197           1       6
+  9. chronicle           0.190           1       8
+ 10. fictional           0.187           1       9
+ 11. patriarch           0.187           1       9
+ 12. survives            0.187           1       9
+ 13. spanning            0.185           1      10
+ 14. barely              0.178           1      13
+ 15. steps               0.178           1      13
+
+count here: how many times the word is in this plot summary. movies: how many of the 4,309 plot summaries have it.
+
+The plot summary: Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.
+
+Your settings: REMOVE_STOP_WORDS = False, MIN_MOVIES = 1, REPEATS_COUNT_LESS = True.
+```
+
+Looking at both movies: **what do the top terms get right, and what do they get wrong, about what makes each one distinctive?** A sentence or two is enough.
+
+**User:**
+It gets specific names like vito and corleone right, but still weighs terms like launching, barely, and steps highly even if they contribute poorly to informing us about the movie.
+
+**Claude:**
+- 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
+- 🔧 `Bash`: Commit Part 2 and push
 
 <!-- end-session: 1755bad9-16b8-4825-b0ec-bb1ae233900f -->

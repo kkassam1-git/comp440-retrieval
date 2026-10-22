@@ -705,5 +705,8 @@ Maybe it makes sense to have embeddings list out a top match list and use TF-IDf
 **Claude:**
 - 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
 - 🔧 `Bash`: Commit Part 5 and push
+- 🔧 `Skill`: checkpoint
+- 🔧 `Bash`: Check that commands run and list what is missing
+- 🔧 `Bash`: Refresh transcript, check status, push, get origin URL
 
 <!-- end-session: 1755bad9-16b8-4825-b0ec-bb1ae233900f -->

@@ -103,7 +103,7 @@ Setup will continue from there: installing the packages, then your name and the 
 <!-- transcript-session: 1755bad9-16b8-4825-b0ec-bb1ae233900f | 2026-10-22T02:51:39.761Z -->
 ## Session `1755bad9`, 2026-10-22 02:51:39
 
-*5 user turns. Tool outputs and reasoning omitted.*
+*6 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 lets start this activity
@@ -199,5 +199,56 @@ Second prediction: **for vague descriptions, which method will do better, and wh
 
 **User:**
 the embedding search works better for vague descriptions - since that's waht embdedding does, it compresses the question into general ideas
+
+**Claude:**
+- 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
+- 🔧 `Bash`: Commit Part 0 predictions and push
+- 🔧 `Read`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/tfidf_setti...
+- 🔧 `Bash`: Check the template for new commits
+Your second slot now reads:
+
+> ### Vague descriptions: which method will do better, and why?
+>
+> the embedding search works better for vague descriptions - since that's waht embdedding does, it compresses the question into general ideas
+
+```
+Wrote TRANSCRIPT.md: 2 session(s).
+2 session(s) found; this session in TRANSCRIPT.md: yes.
+[main fcfc7be] Part 0 done
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+To github.com:kkassam1-git/comp440-retrieval.git
+   8ddbec7..fcfc7be  main -> main
+```
+
+Setup is done, and your predictions are saved on GitHub.
+
+**Part 1: Build the TF-IDF model** (about 6 minutes)
+
+Most students get through Part 3 or 4 in class, and Part 5 is fine to do at home.
+
+`tfidf_settings.py` has three settings. Words are always lowercased, so "Dog" and "dog" count as one word.
+
+**1. `REMOVE_STOP_WORDS`**: `True` or `False`. Currently **`False`**.
+When `True`, this drops about 300 common English words before scoring. The list comes from scikit-learn and goes beyond "the" and "of". It also drops words like "bill", "fire", "name" and "system", plus the number words "one" to "twelve" (but not "seven"). Example: "the fire at the bank" becomes "bank".
+
+**2. `MIN_MOVIES`**: a whole number, 1 or more. Currently **`1`**.
+This keeps only words that appear in at least this many plot summaries. A word found in fewer is ignored. Only 1 keeps a word that appears in a single summary. Example: at 2, a character name that shows up in one movie's summary is dropped.
+
+**3. `REPEATS_COUNT_LESS`**: `True` or `False`. Currently **`False`**.
+When `True`, a word repeated in one summary counts as 1 + log(count) instead of its full count. So 4 appearances count as about 2.4. Example: a summary that says "shark" 4 times gets less of a boost from "shark".
+
+Keeping a current value is a choice too. What are your three choices, each with a reason? One reply with a sentence per setting is enough.
+
+**User:**
+Remove_stop_words - false, idf should shrink these commonly occuring "stop words" and their weights
+
+min movies - 1, anythign above this would make specific scenarios not workable, i.e. a movie name appears only in one summary and it is ignored because it is less than 2 appearances.
+
+repeat_count_less - True, repeated count does not necessarily translate to higher relevance, especially given words that are not specific names.
+
+**Claude:**
+- 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/tfidf_setti...
+- 🔧 `Edit`: /Users/kaifkassam/Desktop/Semester 7/Collective Intelligence/Github/comp440-retrieval/WRITEUP.md
+- 🔧 `Bash`: Show settings, commit Part 1 and push
 
 <!-- end-session: 1755bad9-16b8-4825-b0ec-bb1ae233900f -->

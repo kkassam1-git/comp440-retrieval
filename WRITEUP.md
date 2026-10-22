@@ -34,11 +34,15 @@ It gets specific names like vito and corleone right, but still weighs terms like
 
 ### Your questions, as you typed them
 
-XXXX
+1. A man travels on a mission to a nearby planet. A storm strikes and his team leaves him there thinking he is dead. He manages to survive and returns back eventually after setting communication with Earth.
+2. A group of traders short the housing market after the financial crash of 2008.
+3. A detective travels with a group of friends of someone really wealthy  who has anonymously invited him to an island. The friends play a game and people start dying. The detective has to solve this mystery.
 
 ### Did the movies you meant come up? What did TF-IDF get right and wrong?
 
-XXXX
+The first one was spot on, the second one failed to have the movie in any of the top 10 listed, and the third one had the movie ranked number 4
+
+It got right the matches where the meanings of words are not interchangeable - I would say the use of the word crash threw the algorithm off in the second search and the use of many common words like after, of, the, etc.
 
 ## Part 4: The question bank
 

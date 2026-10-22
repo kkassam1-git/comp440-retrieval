@@ -48,11 +48,11 @@ It got right the matches where the meanings of words are not interchangeable - I
 
 ### Which kind of question did TF-IDF handle best, and which worst? By how much?
 
-XXXX
+TF-IDF did best on the questions that were detailed and had specific references like names of places, charactersm and things. It did the worst on reworded and close to that on vague questions. There is a 94% difference between the best and worst category.
 
 ### The misses you looked at: what do they have in common?
 
-XXXX
+The misses I've looked at seem to include descriptions of similar ideas using different words - i.e. a difference between terms "rich" and "wealthy" or names like "cal" shared with other movies. This is inherently a failure of this algorithm that it depends on the frequency and matching of exact terms.
 
 ## Part 5: Embeddings
 

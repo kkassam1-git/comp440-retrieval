@@ -58,16 +58,16 @@ The misses I've looked at seem to include descriptions of similar ideas using di
 
 ### What is a sentence embedding, in your own words?
 
-XXXX
+Sentence embeddings transform setences and summaries into combinations of numbers encoding the general stance of the words in terms of meaning. This makes it such that texts with different use of vocabulary can still match by similarity of message and meaning. Parasite's summary does not match with any terms in the question, but I assume the sentece embedding approach will place them closer.
 
 ### Where does each method do better, and why?
 
-XXXX
+TF-IDF does better when there is one exact rare reference that matches like "Six-fingered" for The princess Bride. Sentence embeddings does better at matching similarities in descriptions that do not share words like Parasit or Mad Max - but this also fails when there are many options with similar undelying distances in their meaning parameters - the algorithm confuses movies and ranks the wrong ones above the right one.
 
 ### Your Part 0 predictions: which held, and which would you change?
 
-XXXX
+in the context of this experitment, I'd change the specific name part, adding that sentence embeddings still performs on part with TF-IDF on this. The vague description prediction held.
 
 ### How might you combine the two methods?
 
-XXXX
+Maybe it makes sense to have embeddings list out a top match list and use TF-IDf to filter out matches from that selected pool, combining both algorithms.
